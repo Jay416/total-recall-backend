@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "supervisor --harmony index.js",
-    "test": "mocha -R spec --harmony test/api.js",
+    "start": "iojs --harmony_arrow_functions index.js",
+    "test": "mocha --harmony --harmony_arrow_functions -R spec test/api.js",
     "error": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

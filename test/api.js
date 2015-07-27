@@ -1,15 +1,15 @@
-var app = require('../index');
+let app = require('../index');
 
-var should = require('should');
-var request = require('supertest');
+let should = require('should');
+let request = require('supertest');
 
-var fixtur = {
+let fixtur = {
 	group: 'language',
 	question: 'the [ðə:]',
 	answer: ['определенный артикль']
 };
 
-var fixturs = [{
+let fixturs = [{
 	group: 'language',
 	question: 'and [ænd]',
 	answer: ['и, а, но']
@@ -47,12 +47,12 @@ var fixturs = [{
 	answer: ['ты, вы']
 }];
 
-var newRemembers
+let newRemembers
 
 describe('Behavior users:', function() {
-	var agent = request.agent(app);
+	let agent = request.agent(app);
 	describe('Creating one "remembers"', function() {
-		var response; 
+		let response;
 		before(function(done) {
 	    agent.post('/api/remembers')
 	    	.send(fixtur)
@@ -73,27 +73,27 @@ describe('Behavior users:', function() {
 			// response.body.answer.should.equal(fixtur.answer);
 		});
 	});
-	describe('Getting a list of "remembers"', function() { 
+	describe('Getting a list of "remembers"', function() {
 		it('response should have the status of 200', function(done) {
 			agent.get('/api/remembers').expect(200,  done);
 		});
 	});
-	describe('Getting one "remembers" by id', function() { 
+	describe('Getting one "remembers" by id', function() {
 		it('response should have the status of 200', function(done) {
 			agent.get('/api/remembers/:id').expect(200, done);
 		});
 	});
-	describe('Update one "remembers" by id', function() { 
+	describe('Update one "remembers" by id', function() {
 		it('response should have the status of 200', function(done) {
 			agent.put('/api/remembers/:id').expect(200, done);
 		});
 	});
-	describe('Delete one "remembers" by id', function() { 
+	describe('Delete one "remembers" by id', function() {
 		it('response should have the status of 204', function(done) {
 			agent.delete('/api/remembers/:id').expect(204, done);
 		});
 	});
-	describe('Answer to the "remembers"', function() { 
+	describe('Answer to the "remembers"', function() {
 		it('response should have the status of 200', function(done) {
 			agent.put('/api/remembers/:id/answer').expect(200, done);
 		});
